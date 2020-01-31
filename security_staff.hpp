@@ -2,6 +2,10 @@
 #define _SECURITY_STAFF
 
 #include <iostream>
+#include <mysql_connection.h>
+#include <cppconn/driver.h>
+#include <cppconn/exception.h>
+#include <cppconn/prepared_statement.h>
 
 
 namespace access_control{
@@ -20,6 +24,11 @@ class Security_staff{
         std::string db_name;
         std::string db_username;
         std::string db_password;
+
+        sql::Driver *driver;
+        sql::Connection *con;
+        sql::Statement *stmt;
+        sql::PreparedStatement *pstmt;
 
     private:
     public:
