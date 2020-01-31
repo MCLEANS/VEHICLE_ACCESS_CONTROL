@@ -25,12 +25,17 @@ class Security_staff{
     public:
         bool present = true;
     public:
-        Security_staff(std::string db_name,std::string db_username,std::string db_password):db_name(db_name),
-                                                                                            db_username(db_username),
-                                                                                            db_password(db_password);
+        Security_staff(std::string db_name,std::string db_username,std::string db_password);
         ~Security_staff();
         bool connect();
-        
+        bool insert(Staff_details &Staff_details);
+        Staff_details read(std::string employment_number);
+        bool update_name(std::string name, std::string employment_number);
+        bool update_clearence_level(int clearence_level,std::string employment_number);
+        bool update_password(std::string password, std::string employment_number);
+        bool update_is_onduty(bool on_duty, std::string employment_number);
+        bool delete_record(std::string employment_number);
+
 
 
 };
