@@ -1,20 +1,23 @@
 CC = g++
 CFLAGS = -c --std=c++17
 LFLAGS = -Wall
+INFLAGS = -I /usr/include/cppcon
+LIBFLAGS = -L /usr/li -lmysqlcppcon
 OBJS = main.o 
+
 TEST_OBJS = test_default.o security_staff.o test_security_staff.o
 
 all : $(OBJS)
-	$(CC) $(LFLAGS) $(OBJS) -o main 
+	$(CC) $(LFLAGS) $(OBJS) -o main $(LIBFLAGS)
 
 test : $(TEST_OBJS)
-	$(CC) $(LFLAGS) $(TEST_OBJS) -o test
+	$(CC) $(LFLAGS) $(TEST_OBJS) -o test $(LIBFLAGS)
 
 main.o : main.cpp
 	$(CC) $(CFLAGS) main.cpp 
 
 security_staff.o : security_staff.cpp security_staff.hpp
-	$(CC) $(CFLAGS) security_staff.cpp
+	$(CC) $(CFLAGS) $(INFLAGS) security_staff.cpp
 
 
 #-----------UNIT TESTS----------------------------------------
