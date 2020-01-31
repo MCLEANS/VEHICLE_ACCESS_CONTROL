@@ -54,6 +54,31 @@ TEST_CASE("READ SECURITY STAFF DATA FROM DATABASE"){
 
 }
 
+TEST_CASE("UPDATE SECURITY STAFF DETAILS FROM DATABASE"){
+
+    access_control::Security_staff db_staff_details("VEHICLE_ACCESS_CONTROL",
+                                                    "root",
+                                                    "mcleans123");
+    db_staff_details.connect();
+
+     Staff_details staff_details = {
+            "JACK MCLEANS",
+            "QME0001",
+            4,
+            "mcleans_jack",
+            "FALSE"
+            };
+
+    REQUIRE(db_staff_details.update_name(staff_details.name,ID) == true);
+    REQUIRE(db_staff_details.update_employment_number(staff_details.employment_number,ID) == true);
+    REQUIRE(db_staff_details.update_clearence_level(staff_details.clearence_level,ID) == true); 
+    REQUIRE(db_staff_details.update_password(staff_details.password,ID) == true);
+    REQUIRE(db_staff_details.update_is_onduty(staff_details.is_onduty,ID) == true);
+    
+
+}
+
+
 
 
 
