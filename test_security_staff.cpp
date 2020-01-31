@@ -22,7 +22,7 @@ TEST_CASE("INSERT SECURITY STAFF DATA INTO THE DATABASE"){
 
     SECTION("INSERT FIRST DATA POINT "){
 
-        Staff_details staff_details = {
+        access_control::Staff_details staff_details = {
             "JACK MCLEANS",
             "QME0001",
             4,
@@ -42,14 +42,15 @@ TEST_CASE("READ SECURITY STAFF DATA FROM DATABASE"){
                                                     "mcleans123");
     db_staff_details.connect();
 
-    Staff_details staff_details;
+    access_control::Staff_details staff_details;
     std::string employment_number;
 
     staff_details = db_staff_details.read(employment_number);
 
     REQUIRE(staff_details.name == "JACK MCLEANS");
     REQUIRE(staff_details.employment_number == "QME0001");
-    REQUIRE(staff_details.clearence_l == "mcleans_jack");
+    REQUIRE(staff_details.clearence_level == 4);
+    REQUIRE(staff_details.password == "mcleans_jack");
     REQUIRE(staff_details.is_onduty == false);
 
 }
@@ -61,7 +62,7 @@ TEST_CASE("UPDATE SECURITY STAFF DETAILS FROM DATABASE"){
                                                     "mcleans123");
     db_staff_details.connect();
 
-     Staff_details staff_details = {
+     access_control::Staff_details staff_details = {
             "JACK MCLEANS",
             "QME0001",
             4,
@@ -84,7 +85,7 @@ TEST_CASE("DELETE SECURITY STAFF DETAILS FROM DATABASE"){
                                                     "mcleans123");
     db_staff_details.connect();
 
-     Staff_details staff_details = {
+     access_control::Staff_details staff_details = {
             "JACK MCLEANS",
             "QME0001",
             4,
