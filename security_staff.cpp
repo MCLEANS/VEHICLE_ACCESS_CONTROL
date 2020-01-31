@@ -10,6 +10,8 @@ namespace access_control{
 
 
     Security_staff::~Security_staff(){
+        delete con;
+        delete pstmt;
 
     }
 
@@ -26,6 +28,18 @@ namespace access_control{
         }
 
         return true;
+    }
+
+    bool Security_staff::insert(Staff_details &staff_details){
+        pstmt = con ->prepareStatement("INSERT INTO SECURITY_STAFF(NAME,EMPLOYMENT_ID,CLEARANCE_LEVEL,PASSWORD,ON_DUTY) VALUES(?,?,?,?,?)");
+        pstmt->setString(1,staff_details.name);
+        pstmt->setString(2,staff_details.employment_number);
+        pstmt->setInt(3,staff_details.clearance_level);
+        pstmt->setString(4,staff_details.password);
+        pstmt->setBoolean(5,staff_details.is_onduty);
+        
+        return true;
+
     }
 
 }
