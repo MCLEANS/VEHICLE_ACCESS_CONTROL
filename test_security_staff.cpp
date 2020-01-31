@@ -78,7 +78,24 @@ TEST_CASE("UPDATE SECURITY STAFF DETAILS FROM DATABASE"){
 
 }
 
+TEST_CASE("DELETE SECURITY STAFF DETAILS FROM DATABASE"){
+    access_control::Security_staff db_staff_details("VEHICLE_ACCESS_CONTROL",
+                                                    "root",
+                                                    "mcleans123");
+    db_staff_details.connect();
 
+     Staff_details staff_details = {
+            "JACK MCLEANS",
+            "QME0001",
+            4,
+            "mcleans_jack",
+            "FALSE"
+            };
+            
+    SECTION("DELETE ID QME0001"){
+        REQUIRE(db_staff_details.delete_record(staff_details.employment_number));
+    }
+}
 
 
 
