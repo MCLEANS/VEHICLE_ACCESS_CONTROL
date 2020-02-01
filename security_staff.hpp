@@ -2,7 +2,9 @@
 #define _SECURITY_STAFF
 
 #include <iostream>
+#include <string.h>
 #include <mysql_connection.h>
+#include <cppconn/resultset.h>
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
 #include <cppconn/prepared_statement.h>
@@ -16,7 +18,7 @@ struct Staff_details{
     std::string employment_number;
     int clearance_level;
     std::string password;
-    bool is_onduty;
+    std::string is_onduty;
 };
 
 class Security_staff{
@@ -43,7 +45,7 @@ class Security_staff{
         bool update_name(std::string name, std::string employment_number);
         bool update_clearance_level(int clearance_level,std::string employment_number);
         bool update_password(std::string password, std::string employment_number);
-        bool update_is_onduty(bool on_duty, std::string employment_number);
+        bool update_is_onduty(std::string on_duty, std::string employment_number);
         bool delete_record(std::string employment_number);
 
 
