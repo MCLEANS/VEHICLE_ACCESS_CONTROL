@@ -10,9 +10,10 @@ namespace access_control{
 
 
     Security_staff::~Security_staff(){
-        delete con;
-        delete pstmt;
-        delete result;
+        con = NULL;
+        pstmt = NULL;
+        result = NULL ;
+        stmt = NULL;
 
     }
 
@@ -37,7 +38,8 @@ namespace access_control{
         pstmt->setString(2,staff_details.employment_number);
         pstmt->setInt(3,staff_details.clearance_level);
         pstmt->setString(4,staff_details.password);
-        pstmt->setBoolean(5,staff_details.is_onduty);
+        pstmt->setString(5,staff_details.is_onduty);
+        pstmt->executeQuery();
         
         return true;
 
@@ -45,14 +47,26 @@ namespace access_control{
 
     Staff_details Security_staff::read(std::string employment_number){
         access_control::Staff_details staff_details;
-        pstmt = con->prepareStatement("SELECT NAME,EMPLOYMENT_ID,CLEARANCE_LEVEL,PASSWORD,ON_DUTY FROM SECURITY_STAFF WHERE EMPLOYMENT_ID = ?");
-        pstmt->setString(1,employment_number);
+        pstmt = con->prepareStatement("SELECT * FROM SECURITY_STAFF");
         result = pstmt->executeQuery();
-        staff_details.name = result->getString(1);
-        staff_details.employment_number = result->getString(2);
-        staff_details.clearance_level = result->getInt(3);
-        staff_details.password = result->getString(4);
-        staff_details.is_onduty = result->getBoolean(5);
+
+        while(result -> next()){
+            std::cout<<"here 1"<<std::endl;
+            std::string retreived_employment_number = result->getString(3);
+
+            if(employment_number == retreived_employment_number){
+                
+                staff_details.name = result->getString(2).c_str();
+                staff_details.employment_number = result->getString(3).c_str();
+                staff_details.clearance_level = result->getInt(4);
+                staff_details.password = result->getString(5).c_str();
+                staff_details.is_onduty = result->getString(6).c_str();
+
+                return staff_details;
+        
+          }
+
+        }
 
         return staff_details;
 
@@ -89,9 +103,9 @@ namespace access_control{
         return true;
     }
 
-    bool Security_staff::update_is_onduty(bool is_onduty,std::string employment_number){
+    bool Security_staff::update_is_onduty(std::string is_onduty,std::string employment_number){
          pstmt = con->prepareStatement("UPDATE SECURITY_STAFF SET ON_DUTY = ? WHERE EMPLOYMENT_ID = ?");
-        pstmt->setBoolean(1,is_onduty);
+        pstmt->setString(1,is_onduty);
         pstmt->setString(2,employment_number);
         pstmt->executeQuery();
 
