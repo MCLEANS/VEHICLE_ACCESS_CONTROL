@@ -1,8 +1,8 @@
 CC = g++
-CFLAGS = -c --std=c++17
+CFLAGS = -c --std=c++11
 LFLAGS = -Wall
-INFLAGS = -I /usr/include/cppcon
-LIBFLAGS = -L /usr/li -lmysqlcppcon
+INFLAGS = -I/usr/include/cppcon
+LIBFLAGS = -L/usr/lib/x86_64-linux-gnu -lmysqlcppconn
 OBJS = main.o 
 
 TEST_OBJS = test_default.o security_staff.o test_security_staff.o
