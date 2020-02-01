@@ -41,7 +41,7 @@ class Security_staff{
         bool insert(Staff_details &Staff_details);
         Staff_details read(std::string employment_number);
         bool update_name(std::string name, std::string employment_number);
-        bool update_clearence_level(int clearance_level,std::string employment_number);
+        bool update_clearance_level(int clearance_level,std::string employment_number);
         bool update_password(std::string password, std::string employment_number);
         bool update_is_onduty(bool on_duty, std::string employment_number);
         bool delete_record(std::string employment_number);
