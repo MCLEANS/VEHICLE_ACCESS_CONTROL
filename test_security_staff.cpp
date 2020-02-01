@@ -71,11 +71,23 @@ TEST_CASE("UPDATE SECURITY STAFF DETAILS FROM DATABASE"){
             };
     std::string employment_number = "QME345";
 
-    REQUIRE(db_staff_details.update_name(staff_details.name,employment_number) == true);
-    REQUIRE(db_staff_details.update_clearence_level(staff_details.clearence_level,employment_number) == true); 
-    REQUIRE(db_staff_details.update_password(staff_details.password,employment_number) == true);
-    REQUIRE(db_staff_details.update_is_onduty(staff_details.is_onduty,employment_number) == true);
+    SECTION("UPDATE SECURITY STAFF NAME"){
     
+        REQUIRE(db_staff_details.update_name(staff_details.name,employment_number) == true);
+    }
+    SECTION("UPDATE SECURITY STAFF CLEARANCE LEVEL"){
+
+        REQUIRE(db_staff_details.update_clearance_level(staff_details.clearence_level,employment_number) == true); 
+    }
+    SECTION("UPDATE SECURITY STAFF PASSWORD"){
+
+        REQUIRE(db_staff_details.update_password(staff_details.password,employment_number) == true);
+    }
+    SECTION("UPDATE SECURITY STAFF DUTY STATUS"){
+
+        REQUIRE(db_staff_details.update_is_onduty(staff_details.employment_number,employment_number) == true);
+       
+       }
 
 }
 
