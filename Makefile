@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -c --std=c++11
+CFLAGS = -c --std=c++14
 LFLAGS = -Wall
 INFLAGS = -I/usr/include/cppcon
 LIBFLAGS = -L/usr/lib/x86_64-linux-gnu -lmysqlcppconn
