@@ -29,6 +29,7 @@ class Security_staff{
         sql::Connection *con;
         sql::Statement *stmt;
         sql::PreparedStatement *pstmt;
+        sql::ResultSet *result;
 
     private:
     public:
