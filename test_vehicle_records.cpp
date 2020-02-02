@@ -101,6 +101,34 @@ TEST_CASE("UPDATE DATABASE RECORDS"){
         std::string new_vehicle_owner = "MARY JANE";
 
         REQUIRE(vehicle_records.update_vehicle_owner(rfid,new_vehicle_owner) == true);
-        
+
+    }
+
+    SECTION("UPDATE VEHICLE OWNER EMPLOYMENT NUMBER"){
+        std::string rfid = "42E34D2";
+        std::string new_owner_employment_number = "RTA0004";
+
+        REQUIRE(vehicle_records.update_owner_employment_number(rfid,new_owner_employment_number) == true);
+    }
+}
+
+TEST_CASE("DELETE DATABASE RECORD"){
+    access_control::Vehicle_records vehicle_records("localhost/VEHICEL_ACCESS_CONTROL",
+                                                    "root",
+                                                    "mcleans123");
+
+    vehicle_records.connect();
+
+    SECTION("DELETE FIRST RECORD"){
+        std::string rfid = "42E34D2";
+
+        REQUIRE(vehicle_records.delete() == true);
+
+    }
+    
+    SECTION("DELETE SECOND RECORD"){
+        std::string rfid = "3E4D52";
+
+        REQUIRE(vehicle_records.delete(rfid) == true);
     }
 }
