@@ -122,13 +122,13 @@ TEST_CASE("DELETE DATABASE RECORD"){
     SECTION("DELETE FIRST RECORD"){
         std::string rfid = "42E34D2";
 
-        REQUIRE(vehicle_records.delete() == true);
+        REQUIRE(vehicle_records.delete_record(rfid) == true);
 
     }
     
     SECTION("DELETE SECOND RECORD"){
         std::string rfid = "3E4D52";
 
-        REQUIRE(vehicle_records.delete(rfid) == true);
+        REQUIRE(vehicle_records.delete_record(rfid) == true);
     }
 }
