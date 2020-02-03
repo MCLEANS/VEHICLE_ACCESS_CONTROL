@@ -13,7 +13,29 @@ namespace access_control{
         std::string owner_employment_number;
     };
 
+    class Vehicle_records{
+        private:
+            std::string db_name;
+            std::string db_username;
+            std::string db_password;
+        private:
+        public:
+        public:
+            Vehicle_records(std::string db_name,
+                            std::string db_username,
+                            std::string db_passsword);
+            ~Vehicle_records();
+            bool connec();
+            bool insert(Vehicle_details &vehicle_details);
+            Vehicle_details read(std::string rfid);
+            bool update_phone_number(std::string rfid , std::string new_phone_number);
+            bool update_vehicle_owner(std::string rfid, std::string new_vehicle_owner);
+            bool update_owner_employment_number(std::string rfid,std::string new_employment_number);
+            bool delete(std::string rfid);
+    };
+
 }
+
 
 
 
