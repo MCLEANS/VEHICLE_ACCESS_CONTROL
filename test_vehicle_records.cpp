@@ -106,9 +106,9 @@ TEST_CASE("UPDATE DATABASE RECORDS"){
 
     SECTION("UPDATE VEHICLE OWNER EMPLOYMENT NUMBER"){
         std::string rfid = "42E34D2";
-        std::string new_owner_employment_number = "RTA0004";
+        std::string new_employment_number = "RTA0004";
 
-        REQUIRE(vehicle_records.update_owner_employment_number(rfid,new_owner_employment_number) == true);
+        REQUIRE(vehicle_records.update_owner_employment_number(rfid,new_employment_number) == true);
     }
 }
 
