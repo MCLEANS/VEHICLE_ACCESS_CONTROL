@@ -31,7 +31,7 @@ namespace access_control{
             bool update_phone_number(std::string rfid , std::string new_phone_number);
             bool update_vehicle_owner(std::string rfid, std::string new_vehicle_owner);
             bool update_owner_employment_number(std::string rfid,std::string new_employment_number);
-            bool delete(std::string rfid);
+            bool delete_record(std::string rfid);
     };
 
 }
