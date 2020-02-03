@@ -25,7 +25,7 @@ namespace access_control{
                             std::string db_username,
                             std::string db_passsword);
             ~Vehicle_records();
-            bool connec();
+            bool connect();
             bool insert(Vehicle_details &vehicle_details);
             Vehicle_details read(std::string rfid);
             bool update_phone_number(std::string rfid , std::string new_phone_number);
