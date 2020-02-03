@@ -4,6 +4,12 @@
 #include <iostream>
 #include <string.h>
 
+#include <mysql_connection.h>
+#include <cppconn/resultset.h>
+#include <cppconn/driver.h>
+#include <cppconn/exception.h>
+#include <cppconn/prepared_statement.h>
+
 namespace access_control{
     struct Vehicle_details{
         std::string rfid;
@@ -18,6 +24,14 @@ namespace access_control{
             std::string db_name;
             std::string db_username;
             std::string db_password;
+
+            sql::Driver *driver;
+            sql::Connection *con;
+            sql::Statement *stmt;
+            sql::PreparedStatement *pstmt;
+            sql::ResultSet *result;
+
+
         private:
         public:
         public:
