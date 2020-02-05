@@ -3,17 +3,17 @@
 
 TEST_CASE("CONNECT TO DATABASE"){
 
-    access_control::Vehicle_records vehicle_records("localhost/VEHICEL_ACCESS_CONTROL",
+    access_control::Vehicle_records vehicle_records("localhost/VEHICLE_ACCESS_CONTROL",
                                                     "root",
                                                     "mcleans123");
 
-    REQUIRE(vehicle_records.connect == true);
+    REQUIRE(vehicle_records.connect() == true);
     
 }
 
 TEST_CASE("ADD NEW VEHICLE RECORD"){
 
-    access_control::Vehicle_records vehicle_records("localhost/VEHICEL_ACCESS_CONTROL",
+    access_control::Vehicle_records vehicle_records("localhost/VEHICLE_ACCESS_CONTROL",
                                                     "root",
                                                     "mcleans123");
 
@@ -50,11 +50,11 @@ TEST_CASE("ADD NEW VEHICLE RECORD"){
 
 TEST_CASE("READ FROM DATABASE"){
 
-    access_control::Vehicle_records vehicle_records("localhost/VEHICEL_ACCESS_CONTROL",
+    access_control::Vehicle_records vehicle_records("localhost/VEHICLE_ACCESS_CONTROL",
                                                     "root",
                                                     "mcleans123");
 
-    REQUIRE(vehicle_records.connect == true);
+    REQUIRE(vehicle_records.connect() == true);
 
     SECTION("READ FIRST DATA FROM DATABASE"){
         access_control::Vehicle_details vehicle_details;
@@ -82,7 +82,7 @@ TEST_CASE("READ FROM DATABASE"){
 }
 
 TEST_CASE("UPDATE DATABASE RECORDS"){
-    access_control::Vehicle_records vehicle_records("localhost/VEHICEL_ACCESS_CONTROL",
+    access_control::Vehicle_records vehicle_records("localhost/VEHICLE_ACCESS_CONTROL",
                                                     "root",
                                                     "mcleans123");
 
@@ -112,8 +112,10 @@ TEST_CASE("UPDATE DATABASE RECORDS"){
     }
 }
 
+
+
 TEST_CASE("DELETE DATABASE RECORD"){
-    access_control::Vehicle_records vehicle_records("localhost/VEHICEL_ACCESS_CONTROL",
+    access_control::Vehicle_records vehicle_records("localhost/VEHICLE_ACCESS_CONTROL",
                                                     "root",
                                                     "mcleans123");
 
