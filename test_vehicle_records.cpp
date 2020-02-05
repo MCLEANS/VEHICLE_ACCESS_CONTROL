@@ -111,6 +111,28 @@ TEST_CASE("UPDATE DATABASE RECORDS"){
         REQUIRE(vehicle_records.update_owner_employment_number(rfid,new_employment_number) == true);
     }
 
+    SECTION("UPDATE SECOND PHONE NUMBER"){
+        std::string rfid = "3E4D52";
+        std::string  new_phone_number = "+254729003565";
+
+        REQUIRE(vehicle_records.update_phone_number(rfid,new_phone_number) == true);
+
+    }
+
+    SECTION("UPDATE SECOND VEHICLE_OWNER"){
+        std::string rfid = "3E4D52";
+        std::string new_vehicle_owner = "JIM PARSONS";
+
+        REQUIRE(vehicle_records.update_vehicle_owner(rfid,new_vehicle_owner) == true);
+
+    }
+
+    SECTION("UPDATE SECOND VEHICLE OWNER EMPLOYMENT NUMBER"){
+    std::string rfid = "3E4D52";
+    std::string new_employment_number = "RTA0009";
+
+    REQUIRE(vehicle_records.update_owner_employment_number(rfid,new_employment_number) == true);
+}
    
 }
 
