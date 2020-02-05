@@ -20,7 +20,7 @@ TEST_CASE("ADD NEW VEHICLE RECORD"){
     vehicle_records.connect();
 
 
-    SEECTION("INSERT FIRST VEHICLE DETAILS"){
+    SECTION("INSERT FIRST VEHICLE DETAILS"){
 
     access_control::Vehicle_details vehicle_details = {
         "3E4D52",
@@ -92,7 +92,7 @@ TEST_CASE("UPDATE DATABASE RECORDS"){
         std::string rfid = "42E34D2";
         std::string  new_phone_number = "+254729873565";
 
-        REQUIRE(vehicl_records.update_phone_number(rfid,new_phone_number) == true);
+        REQUIRE(vehicle_records.update_phone_number(rfid,new_phone_number) == true);
 
     }
 
