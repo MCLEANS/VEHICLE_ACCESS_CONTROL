@@ -18,7 +18,7 @@ namespace access_control{
                                     std::string db_password);
 
             bool connect();
-    }
+    };
 }
 
 
