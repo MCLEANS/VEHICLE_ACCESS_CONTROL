@@ -51,7 +51,6 @@ namespace access_control{
         result = pstmt->executeQuery();
 
         while(result -> next()){
-            std::cout<<"here 1"<<std::endl;
             std::string retreived_employment_number = result->getString(3);
 
             if(employment_number == retreived_employment_number){
