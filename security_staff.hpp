@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <string.h>
+#include "db_connection.hpp"
+
 #include <mysql_connection.h>
 #include <cppconn/resultset.h>
 #include <cppconn/driver.h>
@@ -21,14 +23,13 @@ struct Staff_details{
     std::string is_onduty;
 };
 
-class Security_staff{
+class Security_staff : public Vehicle_access_control{
     private:
         std::string db_name;
         std::string db_username;
         std::string db_password;
 
-        sql::Driver *driver;
-        sql::Connection *con;
+        
         sql::Statement *stmt;
         sql::PreparedStatement *pstmt;
         sql::ResultSet *result;
@@ -39,7 +40,6 @@ class Security_staff{
     public:
         Security_staff(std::string db_name,std::string db_username,std::string db_password);
         ~Security_staff();
-        bool connect();
         bool insert(Staff_details &Staff_details);
         Staff_details read(std::string employment_number);
         bool update_name(std::string name, std::string employment_number);

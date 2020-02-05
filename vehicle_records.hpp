@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string.h>
+#include "db_connection.hpp"
 
 #include <mysql_connection.h>
 #include <cppconn/resultset.h>
@@ -19,14 +20,12 @@ namespace access_control{
         std::string owner_employment_number;
     };
 
-    class Vehicle_records{
+    class Vehicle_records : public Vehicle_access_control{
         private:
             std::string db_name;
             std::string db_username;
             std::string db_password;
 
-            sql::Driver *driver;
-            sql::Connection *con;
             sql::Statement *stmt;
             sql::PreparedStatement *pstmt;
             sql::ResultSet *result;
@@ -39,7 +38,6 @@ namespace access_control{
                             std::string db_username,
                             std::string db_passsword);
             ~Vehicle_records();
-            bool connect();
             bool insert(Vehicle_details &vehicle_details);
             Vehicle_details read(std::string rfid);
             bool update_phone_number(std::string rfid , std::string new_phone_number);

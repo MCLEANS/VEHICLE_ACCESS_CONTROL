@@ -4,9 +4,9 @@ namespace access_control{
 
     Vehicle_records::Vehicle_records(std::string db_name,
                                         std::string db_username,
-                                        std::string db_password):db_name(db_name),
-                                                                    db_username(db_username),
-                                                                    db_password(db_password){
+                                        std::string db_password):Vehicle_access_control(db_name,
+                                                                                        db_username,
+                                                                                        db_password){
 
     }
 
@@ -16,19 +16,7 @@ namespace access_control{
         result = NULL ;
         stmt = NULL;
     }
-    
-    bool Vehicle_records::connect(){
-         try{
-            driver = get_driver_instance();
-            con = driver->connect(this->db_name,this->db_username,this->db_password);
-        }
-        catch(sql::SQLException e){
-            std::cout<<"could not connect to db, ERROR:  "<<e.what()<<std::endl;
-            return false;
-        }
 
-        return true;
-    }
 
     bool Vehicle_records::insert(Vehicle_details &vehicle_details){
         pstmt = con ->prepareStatement("INSERT INTO VEHICLE_RECORDS (RF_ID, PLATE_NUMBER, VEHICLE_OWNER, PHONE_NUMBER, OWNER_EMPLOYMENT_NUMBER) VALUES(?,?,?,?,?)  ");

@@ -16,12 +16,23 @@ namespace access_control{
         std::string db_name;
         std::string db_username;
         std::string db_password;
+
+        
+
         private:
         public:
+             sql::Driver *driver;
+             sql::Connection *con;
         public:
             Vehicle_access_control(std::string db_name,
                                     std::string db_username,
                                     std::string db_password);
+
+
+
+
+
+            ~Vehicle_access_control();
 
             bool connect();
     };

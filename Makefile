@@ -7,12 +7,17 @@ LIBFLAGS = -L/usr/lib/x86_64-linux-gnu -lmysqlcppconn
 OBJS += main.o  
 OBJS += security_staff.o
 OBJS += vehicle_records.o
+OBJS += db_connection.o
 
-TEST_OBJS += test_default.o 
+
 TEST_OBJS += security_staff.o 
-TEST_OBJS += test_security_staff.o
 TEST_OBJS += vehicle_records.o 
+TEST_OBJS += db_connection.o
+TEST_OBJS += test_default.o 
+TEST_OBJS += test_security_staff.o
 TEST_OBJS += test_vehicle_records.o
+TEST_OBJS += test_db_connection.o
+
 
 all : $(OBJS)
 	$(CC) $(LFLAGS) $(OBJS) -o main $(LIBFLAGS)
@@ -28,7 +33,8 @@ security_staff.o : security_staff.cpp security_staff.hpp
 
 vehicle_records.o : vehicle_records.cpp vehicle_records.hpp
 	$(CC) $(CFLAGS) $(INFLAGS) vehicle_records.cpp
-
+db_connection.o : db_connection.cpp db_connection.hpp
+	$(CC) $(CFLAGS) $(INFLAGS) db_connection.cpp
 
 #-----------UNIT TESTS----------------------------------------
 
@@ -40,6 +46,9 @@ test_security_staff.o : test_security_staff.cpp security_staff.hpp
 
 test_vehicle_records.o : test_vehicle_records.cpp vehicle_records.hpp
 	$(CC) $(CFLAGS) test_vehicle_records.cpp
+
+test_db_connection.o : test_db_connection.cpp db_connection.hpp
+	$(CC) $(CFLAGS) test_db_connection.cpp
 
 
 

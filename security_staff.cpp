@@ -4,12 +4,14 @@ namespace access_control{
 
     Security_staff::Security_staff(std::string db_name,
                                     std::string db_username,
-                                    std::string db_password):db_name(db_name),
-                                                            db_username(db_username),
-                                                            db_password(db_password){}
+                                    std::string db_password):Vehicle_access_control(db_name,
+                                                                                    db_username,
+                                                                                    db_password){
+
+    }
 
 
-    Security_staff::~Security_staff(){
+    Security_staff::~Security_staff(){              
         con = NULL;
         pstmt = NULL;
         result = NULL ;
@@ -17,7 +19,7 @@ namespace access_control{
 
     }
 
-    bool Security_staff::connect(){
+  /*  bool Security_staff::connect(){
         
 
         try{
@@ -30,7 +32,7 @@ namespace access_control{
         }
 
         return true;
-    }
+    } */
 
     bool Security_staff::insert(Staff_details &staff_details){
         pstmt = con ->prepareStatement("INSERT INTO SECURITY_STAFF(NAME,EMPLOYMENT_ID,CLEARANCE_LEVEL,PASSWORD,ON_DUTY) VALUES(?,?,?,?,?)");
