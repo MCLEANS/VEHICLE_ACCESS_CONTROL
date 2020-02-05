@@ -88,7 +88,7 @@ TEST_CASE("UPDATE DATABASE RECORDS"){
 
     vehicle_records.connect();
 
-    SECTION("UPDATE  PHONE NUMBER"){
+    SECTION("UPDATE FIRST PHONE NUMBER"){
         std::string rfid = "42E34D2";
         std::string  new_phone_number = "+254729873565";
 
@@ -96,7 +96,7 @@ TEST_CASE("UPDATE DATABASE RECORDS"){
 
     }
 
-    SECTION("UPDATE VEHICLE_OWNER"){
+    SECTION("UPDATE FIRST VEHICLE_OWNER"){
         std::string rfid = "42E34D2";
         std::string new_vehicle_owner = "MARY JANE";
 
@@ -104,12 +104,14 @@ TEST_CASE("UPDATE DATABASE RECORDS"){
 
     }
 
-    SECTION("UPDATE VEHICLE OWNER EMPLOYMENT NUMBER"){
+    SECTION("UPDATE FIRST VEHICLE OWNER EMPLOYMENT NUMBER"){
         std::string rfid = "42E34D2";
         std::string new_employment_number = "RTA0004";
 
         REQUIRE(vehicle_records.update_owner_employment_number(rfid,new_employment_number) == true);
     }
+
+   
 }
 
 
