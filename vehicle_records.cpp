@@ -31,7 +31,7 @@ namespace access_control{
     }
 
     bool Vehicle_records::insert(Vehicle_details &vehicle_details){
-        pstmt = con ->prepareStatement("INSERT INTO VEHICLE_ACCESS_CONTROL (RF_ID, PLATE_NUMBER, VRHICLE_OWNER, PHONE_NUMBER, OWNER_EMPLOYMENT_NUMBER) VALUES(?,?,?,?,?)  ");
+        pstmt = con ->prepareStatement("INSERT INTO VEHICLE_RECORDS (RF_ID, PLATE_NUMBER, VEHICLE_OWNER, PHONE_NUMBER, OWNER_EMPLOYMENT_NUMBER) VALUES(?,?,?,?,?)  ");
         pstmt->setString(1,vehicle_details.rfid);
         pstmt->setString(2,vehicle_details.plate_number);
         pstmt->setString(3,vehicle_details.vehicle_owner);
@@ -44,7 +44,7 @@ namespace access_control{
 
     Vehicle_details Vehicle_records::read(std::string rfid){
         Vehicle_details vehicle_details;
-        pstmt = con->prepareStatement("SELECT FROM VEHICLE_ACCESS_CONTROL");
+        pstmt = con->prepareStatement("SELECT * FROM VEHICLE_RECORDS");
         result = pstmt->executeQuery();
 
         while(result -> next()){
