@@ -9,20 +9,22 @@ OBJS += security_staff.o
 OBJS += vehicle_records.o
 OBJS += db_connection.o
 
-
+TEST_OBJS += test_default.o 
 TEST_OBJS += security_staff.o 
 TEST_OBJS += vehicle_records.o 
 TEST_OBJS += db_connection.o
-TEST_OBJS += test_default.o 
 TEST_OBJS += test_security_staff.o
 TEST_OBJS += test_vehicle_records.o
 TEST_OBJS += test_db_connection.o
 
 
+
 all : $(OBJS)
+	@echo "---------------linking---------------------"
 	$(CC) $(LFLAGS) $(OBJS) -o main $(LIBFLAGS)
 
 test : $(TEST_OBJS)
+	@echo "---------------linking tests---------------------"
 	$(CC) $(LFLAGS) $(TEST_OBJS) -o test $(LIBFLAGS)
 
 main.o : main.cpp
@@ -39,6 +41,7 @@ db_connection.o : db_connection.cpp db_connection.hpp
 #-----------UNIT TESTS----------------------------------------
 
 test_default.o : test_default.cpp
+	@echo "--------compiling required source files------------"
 	$(CC) $(CFLAGS) test_default.cpp 
 
 test_security_staff.o : test_security_staff.cpp security_staff.hpp
@@ -62,9 +65,11 @@ run_test:
 
 
 clean :
+	@echo "-----------------cleaning--------------"
 	rm *.o main
 
 clean_test:
+	@echo "-----------------cleaning test build files--------------"
 	rm *.o test
 	
 
