@@ -39,7 +39,8 @@ namespace access_control{
     std::vector<Access_details> Access_logs::retreive_by_rfid(std::string rfid){
         std::vector<Access_details> retreived_details;
 
-        pstmt = con->prepareStatement("SELECT * FROM ACCESS_LOGS");
+        pstmt = con->prepareStatement("SELECT * FROM ACCESS_LOGS WHERE RF_ID = ?");
+        pstmt->setString(1,rfid);
         result = pstmt->executeQuery();
 
         while(result -> next()){
