@@ -68,3 +68,13 @@ TEST_CASE("UPDATE ACCESS LOGS"){
         REQUIRE(access_logs.update(access_details) == true);
     }
 }
+
+TEST_CASE("RETREIVE LOGS FROM DATABASE"){
+    access_control::Access_logs access_logs("localhost/VEHICLE_ACCESS_CONTROL",
+                                            "root",
+                                            "mcleans123");
+    access_logs.connect();
+
+    SECTION(RETREIVE FIRST)
+
+}
