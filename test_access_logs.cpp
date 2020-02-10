@@ -75,6 +75,11 @@ TEST_CASE("RETREIVE LOGS FROM DATABASE"){
                                             "mcleans123");
     access_logs.connect();
 
-    SECTION(RETREIVE FIRST)
+    std::vector<access_control::Access_details> retreived_details;
+    std::string rfid;
+
+    retreived_details = access_logs.retreive_by_rfid(rfid);
+
+    std::vector<access_control::Access_details>::iterator itr = retreived_details.begin();
 
 }
