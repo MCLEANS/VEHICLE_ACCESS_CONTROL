@@ -2,6 +2,8 @@
 #define _ACCESS_LOGS_
 
 #include <iostream>
+#include <vector>
+
 #include "db_connection.hpp"
 
 namespace access_control{
@@ -36,7 +38,7 @@ namespace access_control{
 
             bool insert(Access_entrance_details &access_details);
             bool update(Access_exit_details &access_details);
-            Access_details retreive_by_rfid();
+            Access_details retreive_by_rfid(std::string rfid);
             
 
             ~Access_logs();
