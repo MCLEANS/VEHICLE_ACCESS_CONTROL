@@ -24,7 +24,7 @@ TEST_CASE("INSERT LOGS INTO THE DATABASE"){
     access_logs.connect();
 
     SECTION("FIRST ENTRANCE ACCESS LOG "){
-        access_control::Access_details access_details = {
+        access_control::Access_entrance_details access_details = {
             "3E4D52",
             "A2",
             "TRUE"
@@ -34,7 +34,7 @@ TEST_CASE("INSERT LOGS INTO THE DATABASE"){
 
     }
     SECTION("SECOND ENTRANCE ACCESS LOG"){
-        access_control::Access_details access_details = {
+        access_control::Access_entrance_details access_details = {
             "42E34D2",
             "A4",
             "TRUE"
@@ -44,3 +44,27 @@ TEST_CASE("INSERT LOGS INTO THE DATABASE"){
     }
 }
 
+TEST_CASE("UPDATE ACCESS LOGS"){
+    access_control::Access_logs access_logs("localhost/VEHICLE_ACCESS_CONTROL",
+                                            "root",
+                                            "mcleans123");
+    access_logs.connect();
+
+    SECTION("FIRST ACCESS LOG  UPDATE"){
+        access_control::Access_exit_details access_details = {
+            "42E34D2",
+            "FALSE"
+        };
+
+        REQUIRE(access_logs.update(access_details) == true);
+    }
+
+        SECTION("SECOND ACCESS LOG  UPDATE"){
+        access_control::Access_exit_details access_details = {
+            "3E4D52",
+            "FALSE"
+        };
+
+        REQUIRE(access_logs.update(access_details) == true);
+    }
+}
