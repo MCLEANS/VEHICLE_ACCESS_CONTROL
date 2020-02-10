@@ -85,7 +85,7 @@ TEST_CASE("RETREIVE LOGS FROM DATABASE"){
     std::vector<access_control::Access_details>::iterator itr = retreived_details.begin();
 
     for(itr ; itr != retreived_details.end(); itr++){
-        CHECK(*itr->rfid == "42E34D2");
+        CHECK(itr->rfid == "42E34D2");
         
         }
     }
@@ -99,7 +99,7 @@ TEST_CASE("RETREIVE LOGS FROM DATABASE"){
         std::vector<access_control::Access_details>::iterator itr = retreived_details.begin();
 
         for(itr; itr != retreived_details.end(); itr++){
-            CHECK(*itr->rfid = "3E4D52")
+            CHECK(itr->rfid == "3E4D52");
         }
 
     }
