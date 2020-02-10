@@ -75,11 +75,35 @@ TEST_CASE("RETREIVE LOGS FROM DATABASE"){
                                             "mcleans123");
     access_logs.connect();
 
+    SECTION("FIRST RETREIVAL ATTEMPT"){
+
     std::vector<access_control::Access_details> retreived_details;
-    std::string rfid;
+    std::string rfid = "42E34D2";
 
     retreived_details = access_logs.retreive_by_rfid(rfid);
 
     std::vector<access_control::Access_details>::iterator itr = retreived_details.begin();
+
+    for(itr ; itr != retreived_details.end(); itr++){
+        CHECK(*itr->rfid == "42E34D2");
+        
+        }
+    }
+
+    SECTION("SECOND RETREIVAL ATTEMPT"){
+        std::vector<access_control::Access_details> retreived_details;
+        std::string rfid = "3E4D52";
+
+        retreived_details = access_logs.retreive_by_rfid(rfid);
+
+        std::vector<access_control::Access_details>::iterator itr = retreived_details.begin();
+
+        for(itr; itr != retreived_details.end(); itr++){
+            CHECK(*itr->rfid = "3E4D52")
+        }
+
+    }
+
+
 
 }
