@@ -21,9 +21,9 @@ namespace access_control{
                             std::string db_password);
             ~Parking_status();
             bool update(Parking_space &parking_space);
-            std::string retrive(std::string lot)
+            std::string retreive(std::string lot);
 
-    }
+    };
 
 
 }
