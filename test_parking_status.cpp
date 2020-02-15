@@ -25,7 +25,7 @@ TEST_CASE("UPDATE PARKING STATUS"){
         };
 
         parking_status.update(parking_space);
-        CHECK(parking_status.retreive(parking_space.id) == "TRUE");
+        CHECK(parking_status.retreive(parking_space.lot) == "TRUE");
     }
 
     SECTION("SECOND PARKING SPACE UPDATE"){
@@ -35,7 +35,7 @@ TEST_CASE("UPDATE PARKING STATUS"){
         };
 
         parking_status.update(parking_space);
-        CHECK(parking_status.retreive(parking_space.id) == "TRUE");
+        CHECK(parking_status.retreive(parking_space.lot) == "TRUE");
     }
 
 }
