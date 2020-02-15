@@ -27,4 +27,27 @@ namespace access_control{
 
         return true;
     }
+
+    std::string Parking_status::retreive(std::string lot){
+        std::string status;
+
+         pstmt = con->prepareStatement("SELECT * FROM PARKING_STATUS");
+        result = pstmt->executeQuery();
+
+        while(result -> next()){
+            std::string retreived_space = result->getString(2);
+
+            if(lot== retreived_space){
+                
+                status = result->getString(3).c_str();
+               
+
+                return status;
+                
+            }
+         }
+
+         return status;
+    }
+
 }
