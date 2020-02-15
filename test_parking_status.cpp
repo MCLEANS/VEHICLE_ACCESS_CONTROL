@@ -1,7 +1,7 @@
 #include "Catch/catch.hpp"
 #include "parking_status.hpp"
 
-TEST_CASE("CONNECT TO DATABASE"){
+TEST_CASE("DATABASE CONNECTION TEST"){
     access_control::Parking_status parking_status("localhost/VEHICLE_ACCESS_CONTROL",
                                                     "root",
                                                     "mcleans123");
