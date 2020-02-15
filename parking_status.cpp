@@ -18,4 +18,13 @@ namespace access_control{
         stmt = NULL;
 
     }
+
+    bool Parking_status::update(Parking_space &parking_space){
+        pstmt = con->prepareStatement("UPDATE PARKING_STATUS SET IS_OCCUPIED = ? WHERE SPACE = ?");
+        pstmt->setString(1,parking_space.status);
+        pstmt->setString(2,parking_space.lot);
+        pstmt->executeQuery();
+
+        return true;
+    }
 }
