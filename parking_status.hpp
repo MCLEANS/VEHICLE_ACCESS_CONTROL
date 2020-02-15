@@ -4,6 +4,12 @@
 #include <iostream>
 #include "db_connection.hpp"
 
+#include <mysql_connection.h>
+#include <cppconn/resultset.h>
+#include <cppconn/driver.h>
+#include <cppconn/exception.h>
+#include <cppconn/prepared_statement.h>
+
 namespace access_control{
 
     struct Parking_space{
@@ -13,6 +19,10 @@ namespace access_control{
 
     class Parking_status: public Vehicle_access_control{
         private:
+            sql::Statement *stmt;
+            sql::PreparedStatement *pstmt;
+            sql::ResultSet *result;
+            
         private:
         public:
         public:
