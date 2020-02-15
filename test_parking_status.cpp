@@ -25,7 +25,17 @@ TEST_CASE("UPDATE PARKING STATUS"){
         };
 
         parking_status.update(parking_space);
-        CHECK(parking_space.get_status(parking_space.space_id) == "TRUE");
+        CHECK(parking_status.retreive(parking_space.id) == "TRUE");
+    }
+
+    SECTION("SECOND PARKING SPACE UPDATE"){
+        access_control::Parking_space parking_space = {
+            "A2",
+            "TRUE"
+        };
+
+        parking_status.update(parking_space);
+        CHECK(parking_status.retreive(parking_space.id) == "TRUE");
     }
 
 }
