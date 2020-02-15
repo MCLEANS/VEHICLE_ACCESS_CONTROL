@@ -9,16 +9,19 @@ OBJS += security_staff.o
 OBJS += vehicle_records.o
 OBJS += db_connection.o
 OBJS += access_logs.o
+OBJS += parking_status.o
 
 TEST_OBJS += test_default.o 
 TEST_OBJS += security_staff.o 
 TEST_OBJS += vehicle_records.o 
 TEST_OBJS += db_connection.o
 TEST_OBJS += access_logs.o
+TEST_OBJS += parking_status.o
 TEST_OBJS += test_security_staff.o
 TEST_OBJS += test_vehicle_records.o
 TEST_OBJS += test_db_connection.o
 TEST_OBJS += test_access_logs.o
+TEST_OBJS += test_parking_status.o
 
 
 
@@ -45,6 +48,9 @@ db_connection.o : db_connection.cpp db_connection.hpp
 access_logs.o : access_logs.cpp access_logs.hpp
 	$(CC) $(CFLAGS) $(INFLAGS) access_logs.cpp
 
+parking_status.o : parking_status.cpp parking_status.hpp
+	$(CC) $(CFLAGS) $(INFLAGS) parking_status.cpp
+
 #-----------UNIT TESTS----------------------------------------
 
 test_default.o : test_default.cpp
@@ -63,6 +69,8 @@ test_db_connection.o : test_db_connection.cpp db_connection.hpp
 test_access_logs.o : test_access_logs.cpp access_logs.hpp
 	$(CC) $(CFLAGS) test_access_logs.cpp
 
+test_parking_status.o : test_parking_status.cpp parking_status.hpp
+	$(CC) $(CFLAGS) test_parking_status.cpp
 
 
 #--------------------------------------------------------------
