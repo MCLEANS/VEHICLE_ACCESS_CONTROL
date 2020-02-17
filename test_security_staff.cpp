@@ -121,6 +121,17 @@ TEST_CASE("UPDATE SECURITY STAFF DETAILS FROM DATABASE"){
             REQUIRE(db_staff_details.update_is_onduty(staff_details.is_onduty,employment_number) == true);
         
         }
+
+        SECTION("DETAILS VERIFICATION"){
+
+            access_control::Staff_details retreived_staff_details;
+            retreived_staff_details = db_staff_details.read(employment_number);
+
+            CHECK(retreived_staff_details.name == "PAUL MCLEANS");
+            CHECK(retreived_staff_details.is_onduty == "TRUE");
+            CHECK(retreived_staff_details.clearance_level == 5);
+            CHECK(retreived_staff_details.password == "mcleans_jack");
+        }
     }
 }
 
