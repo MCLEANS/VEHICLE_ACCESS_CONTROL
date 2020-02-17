@@ -141,16 +141,14 @@ TEST_CASE("DELETE SECURITY STAFF DETAILS FROM DATABASE"){
                                                     "mcleans123");
     db_staff_details.connect();
 
-     access_control::Staff_details staff_details = {
-            "JACK MCLEANS",
-            "QME0001",
-            4,
-            "mcleans_jack", 
-            "FALSE"
-            };
-
     SECTION("DELETE ID QME0001"){
-      REQUIRE(db_staff_details.delete_record(staff_details.employment_number));
+        std::string employment_number = "QME0001";
+      REQUIRE(db_staff_details.delete_record(employment_number) == true);
+    }
+
+    SECTION("DELETE ID QME0008"){
+        std::string employment_number = "QME0008";
+        REQUIRE(db_staff_details.delete_record(employment_number) == true);
     }
 }
 
