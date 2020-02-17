@@ -39,7 +39,7 @@ TEST_CASE("INSERT SECURITY STAFF DATA INTO THE DATABASE"){
         CHECK(retreived_staff_details.name == "JACK MCLEANS");
         CHECK(retreived_staff_details.is_onduty == "FALSE");
         CHECK(retreived_staff_details.clearance_level == 4);
-        CHECK(retreived_staff_details.password == "jack_mcleans");
+        CHECK(retreived_staff_details.password == "mcleans_jack");
 
         }
 
@@ -93,33 +93,35 @@ TEST_CASE("UPDATE SECURITY STAFF DETAILS FROM DATABASE"){
                                                     "mcleans123");
     db_staff_details.connect();
 
-     access_control::Staff_details staff_details = {
-            "PAUL MCLEANS",
-            "QME0001",
-            5,
-            "mcleans_jack",
-            "TRUE"
-            };
-    std::string employment_number = "QME0001";
+    SECTION("FIRST UPDATE ATTEMPT"){
 
-    SECTION("UPDATE SECURITY STAFF NAME"){
-    
-        REQUIRE(db_staff_details.update_name(staff_details.name,employment_number) == true);
+        access_control::Staff_details staff_details = {
+                "PAUL MCLEANS",
+                "QME0001",
+                5,
+                "mcleans_jack",
+                "TRUE"
+                };
+        std::string employment_number = "QME0001";
+
+        SECTION("UPDATE SECURITY STAFF NAME"){
+        
+            REQUIRE(db_staff_details.update_name(staff_details.name,employment_number) == true);
+        }
+        SECTION("UPDATE SECURITY STAFF CLEARANCE LEVEL"){
+
+            REQUIRE(db_staff_details.update_clearance_level(staff_details.clearance_level,employment_number) == true); 
+        }
+        SECTION("UPDATE SECURITY STAFF PASSWORD"){
+
+            REQUIRE(db_staff_details.update_password(staff_details.password,employment_number) == true);
+        }
+        SECTION("UPDATE SECURITY STAFF DUTY STATUS"){
+
+            REQUIRE(db_staff_details.update_is_onduty(staff_details.is_onduty,employment_number) == true);
+        
+        }
     }
-    SECTION("UPDATE SECURITY STAFF CLEARANCE LEVEL"){
-
-        REQUIRE(db_staff_details.update_clearance_level(staff_details.clearance_level,employment_number) == true); 
-    }
-    SECTION("UPDATE SECURITY STAFF PASSWORD"){
-
-        REQUIRE(db_staff_details.update_password(staff_details.password,employment_number) == true);
-    }
-    SECTION("UPDATE SECURITY STAFF DUTY STATUS"){
-
-        REQUIRE(db_staff_details.update_is_onduty(staff_details.is_onduty,employment_number) == true);
-       
-       }
-
 }
 
 TEST_CASE("DELETE SECURITY STAFF DETAILS FROM DATABASE"){
