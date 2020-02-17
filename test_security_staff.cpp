@@ -33,6 +33,14 @@ TEST_CASE("INSERT SECURITY STAFF DATA INTO THE DATABASE"){
 
         REQUIRE(db_staff_details.insert(staff_details) == true);
 
+        access_control::Staff_details retreived_staff_details;
+        retreived_staff_details = db_staff_details.read(staff_details.employment_number);
+
+        CHECK(retreived_staff_details.name == "JACK MCLEANS");
+        CHECK(retreived_staff_details.is_onduty == "FALSE");
+        CHECK(retreived_staff_details.clearance_level == 4);
+        CHECK(retreived_staff_details.password == "jack_mcleans");
+
         }
 
     SECTION("INSERT SECOND DATA POINT"){
