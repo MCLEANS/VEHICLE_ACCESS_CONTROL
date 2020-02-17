@@ -122,7 +122,7 @@ TEST_CASE("UPDATE SECURITY STAFF DETAILS FROM DATABASE"){
         
         }
 
-        SECTION("DETAILS VERIFICATION"){
+        SECTION("FIRST UPDATE DETAILS VERIFICATION"){
 
             access_control::Staff_details retreived_staff_details;
             retreived_staff_details = db_staff_details.read(employment_number);
@@ -132,6 +132,47 @@ TEST_CASE("UPDATE SECURITY STAFF DETAILS FROM DATABASE"){
             CHECK(retreived_staff_details.clearance_level == 5);
             CHECK(retreived_staff_details.password == "mcleans_jack");
         }
+    }
+
+    SECTION("SECOND UPDATE ATTEMPT"){
+         access_control::Staff_details staff_details = {
+                "SHEMY PARSONS",
+                "QME0008",
+                2,
+                "parsons_jim",
+                "TRUE"
+                };
+        std::string employment_number = "QME0008";
+
+        SECTION("UPDATE SECOND  SECURITY STAFF NAME"){
+        
+            REQUIRE(db_staff_details.update_name(staff_details.name,employment_number) == true);
+        }
+        SECTION("UPDATE SECOND  SECURITY STAFF CLEARANCE LEVEL"){
+
+            REQUIRE(db_staff_details.update_clearance_level(staff_details.clearance_level,employment_number) == true); 
+        }
+        SECTION("UPDATE SECOND SECURITY STAFF PASSWORD"){
+
+            REQUIRE(db_staff_details.update_password(staff_details.password,employment_number) == true);
+        }
+        SECTION("UPDATE SECOND SECURITY STAFF DUTY STATUS"){
+
+            REQUIRE(db_staff_details.update_is_onduty(staff_details.is_onduty,employment_number) == true);
+        
+        }
+
+        SECTION("SECOND UPDATE DETAILS VERIFICATION"){
+
+            access_control::Staff_details retreived_staff_details;
+            retreived_staff_details = db_staff_details.read(employment_number);
+
+            CHECK(retreived_staff_details.name == "SHEMY PARSONS");
+            CHECK(retreived_staff_details.is_onduty == "TRUE");
+            CHECK(retreived_staff_details.clearance_level == 2);
+            CHECK(retreived_staff_details.password == "parsons_jim");
+        }
+
     }
 }
 
